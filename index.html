@@ -1,0 +1,245 @@
+<html><head><title>md2html - Convert Markdown to HTML pages</title><style>/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.builtin {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #a67f59;
+	background: hsla(0,0%,100%,.5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+
+.token.regex,
+.token.important {
+	color: #e90;
+}
+
+.token.important {
+	font-weight: bold;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+body {
+	background-color: #F8F4F0;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+
+.nav {
+	margin: 0;
+	border-bottom: 1px solid black;
+	padding: 0.5em;
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+	padding-left: 4em;
+	background-color: #FFF;
+	background-color: rgba(255, 255, 255, 0.8);
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+	margin: 2em;
+}
+
+.section3, .section4 {
+	margin-left: 3em;
+}
+
+a[href] {
+	color: #06C;
+	text-decoration: none;
+}
+
+a[href]:hover {
+	color: #08F;
+	text-decoration: underline;
+}
+
+h1 {
+	font-size: 2em;
+	text-align: center;
+	margin-bottom: 1.5em;
+}
+
+h2 {
+	font-size: 1.5em;
+	margin-top: 1.5em;
+	border-bottom: 1px solid #888;
+}
+
+h3 {
+	font-size: 1.15em;
+}
+
+h4, h5, h6 {
+	font-size: 1em;
+}
+
+code {
+	position: relative;
+	top: -1px;
+	border: 1px solid #AAA;
+	background-color: #EEE;
+	padding-top: 0.2em;
+	padding-bottom: 0em;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+	margin: 0.2em;
+	margin-right: 0.1em;
+	border-radius: 3px;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+	font-size: 0.85em;
+	font-family: Consolas, monospace;
+}
+
+pre[class*="language-"] {
+	background: inherit;
+}
+
+pre code {
+	border-color: #888;
+	display: block;
+	padding: 0.3em;
+	margin: 0em;
+	border-radius: 5px;
+	width: 100%;
+	overflow: auto;
+}
+
+a[href] code {
+	color: #048;
+	background-color: #ECEEF1;
+	border-color: #68A;
+}</style></head><body><div class="content"><h1 id="-md2html-convert-markdown-to-html-pages"><code>md2html</code> - Convert Markdown to HTML pages</h1><div class="section section1">
+<p>This package produces HTML pages from Markdown input.  CSS/JS is inlined, so every page is self-contained.</p>
+<h2 id="usage">Usage</h2><div class="section section2">
+<pre class="language-"javascript"><code class="lang-javascript"><span class="token keyword" >var</span> md2html <span class="token operator" >=</span> <span class="token function" >require<span class="token punctuation" >(</span></span><span class="token string" >'md2html'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment" spellcheck="true">
+// File usage
+</span>md2html<span class="token punctuation" >.</span><span class="token function" >convert<span class="token punctuation" >(</span></span><span class="token punctuation" >[</span><span class="token string" >'README.md'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span> <span class="token keyword" >function</span> <span class="token punctuation" >(</span>error<span class="token punctuation" >,</span> htmlFiles<span class="token punctuation" >)</span> <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment" spellcheck="true">
+// String usage
+</span><span class="token keyword" >var</span> htmlString <span class="token operator" >=</span> md2html<span class="token punctuation" >.</span><span class="token function" >convertString<span class="token punctuation" >(</span></span>md<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+</div><h2 id="config">Config</h2><div class="section section2">
+<h3 id="conversion-and-highlighting">Conversion and highlighting</h3><div class="section section3">
+<p>This package uses <a href="https://npmjs.org/package/marked">marked</a> to perform the Markdown conversion, and <a href="https://github.com/leaverou/prism/">Prism</a> (modified for use with Node) to perform syntax highlighting.</p>
+<p>Both modules are made available, as <code>md2html.marked</code> and <code>md2html.prism</code> respectively.</p>
+</div><h3 id="additional-styling">Additional styling</h3><div class="section section3">
+<p>Additional styling can be specified using <code>md2html.style</code>:</p>
+<pre class="language-"json"><code class="lang-json"><span class="token punctuation" >{</span>
+    <span class="token string" >"htmlHeader"</span><span class="token punctuation" >:</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+    <span class="token string" >"htmlFooter"</span><span class="token punctuation" >:</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+    <span class="token string" >"css"</span><span class="token punctuation" >:</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >,</span>
+    <span class="token string" >"js"</span><span class="token punctuation" >:</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+</div><h3 id="added-html-content-sections-">Added HTML (content sections)</h3><div class="section section3">
+<p>This package infers sections from the various title depths, and inserts <code>&lt;div class=&quot;section section1&quot;&gt;</code> elements.</p>
+<p>The whole content is wrapped inside a <code>&lt;div class=&quot;content&quot;&gt;</code> tag.</p>
+</div></div></div></div><script></script></body></html>
